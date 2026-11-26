@@ -1,0 +1,49 @@
+@startuml architecture
+title Bank Portal: single-spa shell, MFEs and the strangler-fig route
+skinparam shadowing false
+skinparam componentStyle rectangle
+
+actor Customer
+cloud "CloudFront (CDN)" as cf
+database "S3\nroot-config, importmap.json,\nMFE bundles /mfe/<name>/<version>/" as s3
+node "Lambda (function URL)\nFastify BFF" as bff
+node "ECS Fargate + ALB\nTomcat 10 (legacy JSP)" as tomcat
+cloud "AWS AppConfig\nflag statements.v2" as appconfig
+cloud "CloudWatch RUM" as rum
+cloud "Sentry" as sentry
+
+package "Browser" {
+  component "single-spa root config\n(layout engine + SystemJS)" as root
+  component "@bank/navbar (Vue)" as nav
+  component "@bank/accounts (Vue)" as acc
+  component "@bank/transactions (Vue)" as tx
+  component "@bank/transfer (React 19)" as tr
+  component "@bank/statements (Vue)" as st
+  component "legacy parcel (iframe)" as parcel
+  component "@bank/utility\nauth, i18n, analytics, flags" as util
+  component "@bank/ui\nBkPagination, BkTable, BkButton, BkMoney" as ui
+}
+
+Customer --> cf : HTTPS
+cf --> s3 : "/ and /mfe/*"
+cf --> bff : "/api/*"
+cf --> tomcat : "/legacy/*"
+root --> nav
+root --> acc
+root --> tx
+root --> tr
+root --> st : flag on
+root --> parcel : flag off
+parcel --> tomcat : "/legacy/statements"
+nav ..> util
+acc ..> util
+tx ..> util
+tr ..> util
+st ..> util
+acc ..> ui
+tx ..> ui
+st ..> ui
+bff --> appconfig : GetLatestConfiguration
+util --> rum : page views, vitals, events
+util --> sentry : errors (tag mfe)
+@enduml

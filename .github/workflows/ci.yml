@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Lint, typecheck, Jest, audit, JUnit, Storybook, Playwright, Lighthouse
+        run: scripts/test-all.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-reports
+          path: proof/phase1-local/tests
+          retention-days: 14
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render PlantUML diagrams to SVG
+        run: scripts/render-docs.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: diagrams
+          path: docs/*.svg
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Validate infrastructure code (no cloud credentials)
+        run: |
+          terraform -chdir=infra init -backend=false
+          terraform -chdir=infra validate
+          terraform -chdir=infra fmt -check

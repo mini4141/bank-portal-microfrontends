@@ -1,0 +1,31 @@
+{
+  "name": "@bank/ui",
+  "private": true,
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "pinia": "^4.1.0",
+    "single-spa-vue": "^3.0.1",
+    "vue": "^3.5.46",
+    "vue-i18n": "^11.4.24"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "8.6",
+    "@storybook/addon-essentials": "8.6",
+    "@storybook/blocks": "8.6",
+    "@storybook/test": "8.6",
+    "@storybook/test-runner": "^0.22.1",
+    "@storybook/vue3-vite": "8.6",
+    "@vitejs/plugin-vue": "^6.0.11",
+    "http-server": "^14.1.1",
+    "sass": "^1.108.2",
+    "storybook": "8.6",
+    "vite": "^6.4.6"
+  }
+}

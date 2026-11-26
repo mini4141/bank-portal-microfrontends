@@ -1,0 +1,15 @@
+{
+  "name": "@bank/utility",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.cjs",
+    "start": "webpack serve --mode development --config webpack.config.cjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sentry/vue": "^11.18.0",
+    "aws-rum-web": "^3.2.1"
+  },
+  "main": "src/index.ts"
+}

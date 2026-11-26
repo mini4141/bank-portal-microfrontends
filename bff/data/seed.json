@@ -1,0 +1,1139 @@
+{
+  "customer": {
+    "id": "cust-001",
+    "username": "taro",
+    "name": "Yamada Taro",
+    "nameJa": "山田 太郎"
+  },
+  "accounts": [
+    {
+      "id": "acc-001",
+      "type": "ordinary",
+      "name": "Ordinary Account",
+      "nameJa": "普通預金",
+      "number": "0123456",
+      "openingBalance": 350000
+    },
+    {
+      "id": "acc-002",
+      "type": "savings",
+      "name": "Savings Account",
+      "nameJa": "貯蓄預金",
+      "number": "7654321",
+      "openingBalance": 1200000
+    },
+    {
+      "id": "acc-003",
+      "type": "fixed",
+      "name": "Time Deposit",
+      "nameJa": "定期預金",
+      "number": "1122334",
+      "openingBalance": 3000000
+    }
+  ],
+  "payees": [
+    {
+      "id": "pay-001",
+      "name": "Sato Hanako",
+      "nameJa": "佐藤 花子",
+      "bank": "Sakura Bank",
+      "accountNumber": "1010101"
+    },
+    {
+      "id": "pay-002",
+      "name": "Suzuki Ichiro",
+      "nameJa": "鈴木 一郎",
+      "bank": "Fuji Bank",
+      "accountNumber": "2020202"
+    },
+    {
+      "id": "pay-003",
+      "name": "Tanaka Shop",
+      "nameJa": "田中商店",
+      "bank": "Mizuho Trust",
+      "accountNumber": "3030303"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-0001",
+      "accountId": "acc-001",
+      "date": "2026-09-01",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 2281
+    },
+    {
+      "id": "tx-0071",
+      "accountId": "acc-002",
+      "date": "2026-09-01",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 17974
+    },
+    {
+      "id": "tx-0101",
+      "accountId": "acc-003",
+      "date": "2026-09-01",
+      "description": "Transfer received",
+      "descriptionJa": "振込入金",
+      "type": "credit",
+      "amount": 30885
+    },
+    {
+      "id": "tx-0002",
+      "accountId": "acc-001",
+      "date": "2026-09-02",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 7168
+    },
+    {
+      "id": "tx-0003",
+      "accountId": "acc-001",
+      "date": "2026-09-03",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 2906
+    },
+    {
+      "id": "tx-0072",
+      "accountId": "acc-002",
+      "date": "2026-09-03",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 7024
+    },
+    {
+      "id": "tx-0004",
+      "accountId": "acc-001",
+      "date": "2026-09-04",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 7490
+    },
+    {
+      "id": "tx-0005",
+      "accountId": "acc-001",
+      "date": "2026-09-05",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 5378
+    },
+    {
+      "id": "tx-0102",
+      "accountId": "acc-003",
+      "date": "2026-09-05",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 6369
+    },
+    {
+      "id": "tx-0073",
+      "accountId": "acc-002",
+      "date": "2026-09-06",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 14814
+    },
+    {
+      "id": "tx-0006",
+      "accountId": "acc-001",
+      "date": "2026-09-07",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 2250
+    },
+    {
+      "id": "tx-0007",
+      "accountId": "acc-001",
+      "date": "2026-09-08",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 6784
+    },
+    {
+      "id": "tx-0008",
+      "accountId": "acc-001",
+      "date": "2026-09-09",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 3840
+    },
+    {
+      "id": "tx-0074",
+      "accountId": "acc-002",
+      "date": "2026-09-09",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 184
+    },
+    {
+      "id": "tx-0103",
+      "accountId": "acc-003",
+      "date": "2026-09-09",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 4048
+    },
+    {
+      "id": "tx-0009",
+      "accountId": "acc-001",
+      "date": "2026-09-10",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 683
+    },
+    {
+      "id": "tx-0010",
+      "accountId": "acc-001",
+      "date": "2026-09-12",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 2923
+    },
+    {
+      "id": "tx-0075",
+      "accountId": "acc-002",
+      "date": "2026-09-12",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 1524
+    },
+    {
+      "id": "tx-0011",
+      "accountId": "acc-001",
+      "date": "2026-09-13",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 5622
+    },
+    {
+      "id": "tx-0104",
+      "accountId": "acc-003",
+      "date": "2026-09-13",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 6597
+    },
+    {
+      "id": "tx-0012",
+      "accountId": "acc-001",
+      "date": "2026-09-14",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 5809
+    },
+    {
+      "id": "tx-0013",
+      "accountId": "acc-001",
+      "date": "2026-09-15",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 7731
+    },
+    {
+      "id": "tx-0076",
+      "accountId": "acc-002",
+      "date": "2026-09-15",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 4096
+    },
+    {
+      "id": "tx-0014",
+      "accountId": "acc-001",
+      "date": "2026-09-16",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 26086
+    },
+    {
+      "id": "tx-0015",
+      "accountId": "acc-001",
+      "date": "2026-09-18",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 202
+    },
+    {
+      "id": "tx-0077",
+      "accountId": "acc-002",
+      "date": "2026-09-18",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 104
+    },
+    {
+      "id": "tx-0105",
+      "accountId": "acc-003",
+      "date": "2026-09-18",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0016",
+      "accountId": "acc-001",
+      "date": "2026-09-19",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 1249
+    },
+    {
+      "id": "tx-0017",
+      "accountId": "acc-001",
+      "date": "2026-09-20",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 25717
+    },
+    {
+      "id": "tx-0018",
+      "accountId": "acc-001",
+      "date": "2026-09-21",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0078",
+      "accountId": "acc-002",
+      "date": "2026-09-21",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 365
+    },
+    {
+      "id": "tx-0106",
+      "accountId": "acc-003",
+      "date": "2026-09-22",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 176
+    },
+    {
+      "id": "tx-0019",
+      "accountId": "acc-001",
+      "date": "2026-09-23",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 6210
+    },
+    {
+      "id": "tx-0079",
+      "accountId": "acc-002",
+      "date": "2026-09-23",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0020",
+      "accountId": "acc-001",
+      "date": "2026-09-24",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3773
+    },
+    {
+      "id": "tx-0021",
+      "accountId": "acc-001",
+      "date": "2026-09-25",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3071
+    },
+    {
+      "id": "tx-0022",
+      "accountId": "acc-001",
+      "date": "2026-09-26",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0080",
+      "accountId": "acc-002",
+      "date": "2026-09-26",
+      "description": "Transfer received",
+      "descriptionJa": "振込入金",
+      "type": "credit",
+      "amount": 20193
+    },
+    {
+      "id": "tx-0107",
+      "accountId": "acc-003",
+      "date": "2026-09-26",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0023",
+      "accountId": "acc-001",
+      "date": "2026-09-28",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 4769
+    },
+    {
+      "id": "tx-0024",
+      "accountId": "acc-001",
+      "date": "2026-09-29",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 5135
+    },
+    {
+      "id": "tx-0081",
+      "accountId": "acc-002",
+      "date": "2026-09-29",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 6826
+    },
+    {
+      "id": "tx-0025",
+      "accountId": "acc-001",
+      "date": "2026-09-30",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 7222
+    },
+    {
+      "id": "tx-0026",
+      "accountId": "acc-001",
+      "date": "2026-10-01",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 6677
+    },
+    {
+      "id": "tx-0108",
+      "accountId": "acc-003",
+      "date": "2026-10-01",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 7874
+    },
+    {
+      "id": "tx-0027",
+      "accountId": "acc-001",
+      "date": "2026-10-02",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 4952
+    },
+    {
+      "id": "tx-0082",
+      "accountId": "acc-002",
+      "date": "2026-10-02",
+      "description": "Transfer received",
+      "descriptionJa": "振込入金",
+      "type": "credit",
+      "amount": 18129
+    },
+    {
+      "id": "tx-0028",
+      "accountId": "acc-001",
+      "date": "2026-10-04",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 18354
+    },
+    {
+      "id": "tx-0029",
+      "accountId": "acc-001",
+      "date": "2026-10-05",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0083",
+      "accountId": "acc-002",
+      "date": "2026-10-05",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 3087
+    },
+    {
+      "id": "tx-0109",
+      "accountId": "acc-003",
+      "date": "2026-10-05",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 4993
+    },
+    {
+      "id": "tx-0030",
+      "accountId": "acc-001",
+      "date": "2026-10-06",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 1466
+    },
+    {
+      "id": "tx-0031",
+      "accountId": "acc-001",
+      "date": "2026-10-07",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 397
+    },
+    {
+      "id": "tx-0084",
+      "accountId": "acc-002",
+      "date": "2026-10-08",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3234
+    },
+    {
+      "id": "tx-0032",
+      "accountId": "acc-001",
+      "date": "2026-10-09",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3538
+    },
+    {
+      "id": "tx-0110",
+      "accountId": "acc-003",
+      "date": "2026-10-09",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 4500
+    },
+    {
+      "id": "tx-0033",
+      "accountId": "acc-001",
+      "date": "2026-10-10",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 13020
+    },
+    {
+      "id": "tx-0034",
+      "accountId": "acc-001",
+      "date": "2026-10-11",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 622
+    },
+    {
+      "id": "tx-0085",
+      "accountId": "acc-002",
+      "date": "2026-10-11",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 4047
+    },
+    {
+      "id": "tx-0035",
+      "accountId": "acc-001",
+      "date": "2026-10-12",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 4520
+    },
+    {
+      "id": "tx-0036",
+      "accountId": "acc-001",
+      "date": "2026-10-14",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3957
+    },
+    {
+      "id": "tx-0086",
+      "accountId": "acc-002",
+      "date": "2026-10-14",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 22568
+    },
+    {
+      "id": "tx-0111",
+      "accountId": "acc-003",
+      "date": "2026-10-14",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0037",
+      "accountId": "acc-001",
+      "date": "2026-10-15",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 8895
+    },
+    {
+      "id": "tx-0038",
+      "accountId": "acc-001",
+      "date": "2026-10-16",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 2887
+    },
+    {
+      "id": "tx-0087",
+      "accountId": "acc-002",
+      "date": "2026-10-16",
+      "description": "Transfer received",
+      "descriptionJa": "振込入金",
+      "type": "credit",
+      "amount": 6177
+    },
+    {
+      "id": "tx-0039",
+      "accountId": "acc-001",
+      "date": "2026-10-17",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 14595
+    },
+    {
+      "id": "tx-0040",
+      "accountId": "acc-001",
+      "date": "2026-10-18",
+      "description": "Supermarket",
+      "descriptionJa": "スーパーマーケット",
+      "type": "debit",
+      "amount": 8077
+    },
+    {
+      "id": "tx-0112",
+      "accountId": "acc-003",
+      "date": "2026-10-18",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 2411
+    },
+    {
+      "id": "tx-0088",
+      "accountId": "acc-002",
+      "date": "2026-10-19",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 11377
+    },
+    {
+      "id": "tx-0041",
+      "accountId": "acc-001",
+      "date": "2026-10-20",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 2112
+    },
+    {
+      "id": "tx-0042",
+      "accountId": "acc-001",
+      "date": "2026-10-21",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 1213
+    },
+    {
+      "id": "tx-0043",
+      "accountId": "acc-001",
+      "date": "2026-10-22",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0089",
+      "accountId": "acc-002",
+      "date": "2026-10-22",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 5867
+    },
+    {
+      "id": "tx-0113",
+      "accountId": "acc-003",
+      "date": "2026-10-22",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 20701
+    },
+    {
+      "id": "tx-0044",
+      "accountId": "acc-001",
+      "date": "2026-10-23",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 375
+    },
+    {
+      "id": "tx-0045",
+      "accountId": "acc-001",
+      "date": "2026-10-25",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0090",
+      "accountId": "acc-002",
+      "date": "2026-10-25",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 4071
+    },
+    {
+      "id": "tx-0046",
+      "accountId": "acc-001",
+      "date": "2026-10-26",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 7250
+    },
+    {
+      "id": "tx-0114",
+      "accountId": "acc-003",
+      "date": "2026-10-26",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0047",
+      "accountId": "acc-001",
+      "date": "2026-10-27",
+      "description": "Supermarket",
+      "descriptionJa": "スーパーマーケット",
+      "type": "debit",
+      "amount": 6347
+    },
+    {
+      "id": "tx-0048",
+      "accountId": "acc-001",
+      "date": "2026-10-28",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0091",
+      "accountId": "acc-002",
+      "date": "2026-10-28",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 3071
+    },
+    {
+      "id": "tx-0049",
+      "accountId": "acc-001",
+      "date": "2026-10-29",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 6376
+    },
+    {
+      "id": "tx-0050",
+      "accountId": "acc-001",
+      "date": "2026-10-31",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 3247
+    },
+    {
+      "id": "tx-0092",
+      "accountId": "acc-002",
+      "date": "2026-10-31",
+      "description": "Online shopping",
+      "descriptionJa": "オンラインショッピング",
+      "type": "debit",
+      "amount": 10933
+    },
+    {
+      "id": "tx-0115",
+      "accountId": "acc-003",
+      "date": "2026-10-31",
+      "description": "Transfer received",
+      "descriptionJa": "振込入金",
+      "type": "credit",
+      "amount": 26346
+    },
+    {
+      "id": "tx-0051",
+      "accountId": "acc-001",
+      "date": "2026-11-01",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 3342
+    },
+    {
+      "id": "tx-0052",
+      "accountId": "acc-001",
+      "date": "2026-11-02",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 1049
+    },
+    {
+      "id": "tx-0053",
+      "accountId": "acc-001",
+      "date": "2026-11-03",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 2669
+    },
+    {
+      "id": "tx-0093",
+      "accountId": "acc-002",
+      "date": "2026-11-03",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0116",
+      "accountId": "acc-003",
+      "date": "2026-11-04",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0054",
+      "accountId": "acc-001",
+      "date": "2026-11-05",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 4012
+    },
+    {
+      "id": "tx-0094",
+      "accountId": "acc-002",
+      "date": "2026-11-05",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 4152
+    },
+    {
+      "id": "tx-0055",
+      "accountId": "acc-001",
+      "date": "2026-11-06",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 605
+    },
+    {
+      "id": "tx-0056",
+      "accountId": "acc-001",
+      "date": "2026-11-07",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 1740
+    },
+    {
+      "id": "tx-0057",
+      "accountId": "acc-001",
+      "date": "2026-11-08",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 3762
+    },
+    {
+      "id": "tx-0095",
+      "accountId": "acc-002",
+      "date": "2026-11-08",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0117",
+      "accountId": "acc-003",
+      "date": "2026-11-08",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0058",
+      "accountId": "acc-001",
+      "date": "2026-11-10",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0059",
+      "accountId": "acc-001",
+      "date": "2026-11-11",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0096",
+      "accountId": "acc-002",
+      "date": "2026-11-11",
+      "description": "Convenience store",
+      "descriptionJa": "コンビニエンスストア",
+      "type": "debit",
+      "amount": 797
+    },
+    {
+      "id": "tx-0060",
+      "accountId": "acc-001",
+      "date": "2026-11-12",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0061",
+      "accountId": "acc-001",
+      "date": "2026-11-13",
+      "description": "Supermarket",
+      "descriptionJa": "スーパーマーケット",
+      "type": "debit",
+      "amount": 4602
+    },
+    {
+      "id": "tx-0118",
+      "accountId": "acc-003",
+      "date": "2026-11-13",
+      "description": "Interest",
+      "descriptionJa": "利息",
+      "type": "credit",
+      "amount": 169
+    },
+    {
+      "id": "tx-0062",
+      "accountId": "acc-001",
+      "date": "2026-11-14",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 7245
+    },
+    {
+      "id": "tx-0097",
+      "accountId": "acc-002",
+      "date": "2026-11-14",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0063",
+      "accountId": "acc-001",
+      "date": "2026-11-16",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 8138
+    },
+    {
+      "id": "tx-0064",
+      "accountId": "acc-001",
+      "date": "2026-11-17",
+      "description": "Mobile phone",
+      "descriptionJa": "携帯電話料金",
+      "type": "debit",
+      "amount": 3980
+    },
+    {
+      "id": "tx-0098",
+      "accountId": "acc-002",
+      "date": "2026-11-17",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 4017
+    },
+    {
+      "id": "tx-0119",
+      "accountId": "acc-003",
+      "date": "2026-11-17",
+      "description": "ATM withdrawal",
+      "descriptionJa": "ATM出金",
+      "type": "debit",
+      "amount": 19983
+    },
+    {
+      "id": "tx-0065",
+      "accountId": "acc-001",
+      "date": "2026-11-18",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 8053
+    },
+    {
+      "id": "tx-0066",
+      "accountId": "acc-001",
+      "date": "2026-11-19",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 4428
+    },
+    {
+      "id": "tx-0099",
+      "accountId": "acc-002",
+      "date": "2026-11-20",
+      "description": "Train pass top-up",
+      "descriptionJa": "交通系ICチャージ",
+      "type": "debit",
+      "amount": 1963
+    },
+    {
+      "id": "tx-0067",
+      "accountId": "acc-001",
+      "date": "2026-11-21",
+      "description": "Gas bill",
+      "descriptionJa": "ガス料金",
+      "type": "debit",
+      "amount": 5785
+    },
+    {
+      "id": "tx-0120",
+      "accountId": "acc-003",
+      "date": "2026-11-21",
+      "description": "Refund",
+      "descriptionJa": "返金",
+      "type": "credit",
+      "amount": 5545
+    },
+    {
+      "id": "tx-0068",
+      "accountId": "acc-001",
+      "date": "2026-11-22",
+      "description": "Supermarket",
+      "descriptionJa": "スーパーマーケット",
+      "type": "debit",
+      "amount": 8948
+    },
+    {
+      "id": "tx-0069",
+      "accountId": "acc-001",
+      "date": "2026-11-23",
+      "description": "Restaurant",
+      "descriptionJa": "レストラン",
+      "type": "debit",
+      "amount": 4456
+    },
+    {
+      "id": "tx-0100",
+      "accountId": "acc-002",
+      "date": "2026-11-23",
+      "description": "Salary",
+      "descriptionJa": "給与",
+      "type": "credit",
+      "amount": 280000
+    },
+    {
+      "id": "tx-0070",
+      "accountId": "acc-001",
+      "date": "2026-11-24",
+      "description": "Electricity bill",
+      "descriptionJa": "電気料金",
+      "type": "debit",
+      "amount": 6458
+    }
+  ]
+}

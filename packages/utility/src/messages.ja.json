@@ -1,0 +1,96 @@
+{
+  "common": {
+    "appName": "バンクポータル",
+    "loading": "読み込み中…",
+    "retry": "再試行",
+    "error": "エラーが発生しました。"
+  },
+  "nav": {
+    "accounts": "口座",
+    "transactions": "取引履歴",
+    "transfer": "振込",
+    "statements": "取引明細書",
+    "logout": "ログアウト",
+    "language": "言語",
+    "hello": "{name} 様"
+  },
+  "login": {
+    "title": "ログイン",
+    "username": "お客様ID",
+    "password": "パスワード",
+    "submit": "ログイン",
+    "hint": "デモ用ID: taro / demo1234",
+    "error": "お客様IDまたはパスワードが正しくありません。"
+  },
+  "accounts": {
+    "title": "ご利用口座",
+    "type": {
+      "ordinary": "普通預金",
+      "savings": "貯蓄預金",
+      "fixed": "定期預金"
+    },
+    "number": "口座番号",
+    "balance": "残高",
+    "details": "口座詳細",
+    "back": "口座一覧に戻る",
+    "openingBalance": "期首残高（2026年9月1日）",
+    "viewTransactions": "取引履歴を見る"
+  },
+  "transactions": {
+    "title": "取引履歴",
+    "account": "口座",
+    "type": "種別",
+    "all": "すべて",
+    "credit": "入金",
+    "debit": "出金",
+    "from": "開始日",
+    "to": "終了日",
+    "date": "日付",
+    "description": "摘要",
+    "amount": "金額",
+    "empty": "条件に一致する取引はありません。",
+    "reportProblem": "問題を報告（開発用）"
+  },
+  "transfer": {
+    "title": "振込",
+    "from": "出金口座",
+    "payee": "振込先",
+    "amount": "金額（円）",
+    "memo": "メモ",
+    "review": "内容確認",
+    "confirmTitle": "振込内容のご確認",
+    "confirm": "確定して送信",
+    "back": "戻る",
+    "success": "振込が完了しました",
+    "successDetail": "{payee} 様へ {amount} を振り込みました。",
+    "newTransfer": "続けて振込する",
+    "insufficient": "選択した口座の残高が不足しています。",
+    "failed": "振込を完了できませんでした。"
+  },
+  "statements": {
+    "title": "月次取引明細書",
+    "account": "口座",
+    "month": "対象月",
+    "show": "表示",
+    "opening": "前月繰越",
+    "debit": "お支払合計",
+    "credit": "お預入合計",
+    "closing": "月末残高",
+    "date": "日付",
+    "description": "摘要",
+    "balance": "残高",
+    "migrated": "移行済み明細書（v2）",
+    "withdrawal": "お支払",
+    "deposit": "お預入"
+  },
+  "pagination": {
+    "label": "ページ送り",
+    "first": "最初のページ",
+    "prev": "前のページ",
+    "next": "次のページ",
+    "last": "最後のページ",
+    "pageOf": "{page} / {total} ページ",
+    "rows": "表示件数",
+    "total": "全{total}件"
+  }
+}

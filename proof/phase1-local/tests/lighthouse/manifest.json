@@ -1,0 +1,15 @@
+[
+  {
+    "url": "http://localhost:9000/accounts",
+    "isRepresentativeRun": true,
+    "htmlPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_08_13_49.report.html",
+    "jsonPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_08_13_49.report.json",
+    "summary": {
+      "performance": 0.99,
+      "accessibility": 0.98,
+      "best-practices": 1,
+      "seo": 0.91,
+      "agentic-browsing": 0.5
+    }
+  }
+]

@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Standards/Pagination standard" />
+
+# Pagination standard
+
+Every micro-frontend that lists data **must** use `BkPagination`. This keeps back-office and customer screens consistent.
+
+| Rule          | Standard                                                                                  |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| Page sizes    | `10` (default), `25`, `50`                                                                |
+| URL           | State lives in `?page=<n>&size=<n>`; a reload or shared link restores it                  |
+| Server        | The API paginates (`page`, `size`) and returns `{ items, page, size, total, totalPages }` |
+| Keyboard      | `←` / `→` previous / next page, `Home` / `End` first / last page                          |
+| Accessibility | `<nav aria-label>`, `aria-current="page"`, live region announces "Page X of Y"            |
+| i18n          | All labels come from the shared `pagination.*` catalog keys (EN / JA)                     |
+| Changing size | Resets to page 1                                                                          |
+
+```vue
+<BkPagination v-model:page="page" v-model:size="size" :total="total" />
+```
+
+Use `readPaginationFromUrl()` to initialise `page` and `size` from the address bar.

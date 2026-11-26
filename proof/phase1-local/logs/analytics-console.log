@@ -1,0 +1,11 @@
+[analytics] page_view /login
+[analytics] page_view /login
+[analytics] page_view /accounts
+[analytics] event locale_changed {"locale":"ja"}
+[analytics] event locale_changed {"locale":"en"}
+[analytics] page_view /transactions
+[analytics] event mfe_error {"mfe":"transactions","message":"Demo error thrown inside the transactions MFE"}
+[analytics] page_view /transfer
+[analytics] event transfer_submitted {"amount":2500,"currency":"JPY"}
+[analytics] page_view /statements
+[analytics] page_view /statements

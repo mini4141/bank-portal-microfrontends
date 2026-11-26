@@ -1,0 +1,10 @@
+PASS browser: chromium src/components/BkTable.stories.ts (7.014 s)
+PASS browser: chromium src/components/BkButton.stories.ts (7.083 s)
+PASS browser: chromium src/components/BkPagination.stories.ts (7.247 s)
+PASS browser: chromium src/components/BkMoney.stories.ts (7.175 s)
+
+Test Suites: 4 passed, 4 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        11.86 s
+Ran all test suites.

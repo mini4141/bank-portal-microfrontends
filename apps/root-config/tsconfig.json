@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": { "@bank/utility": ["../../packages/utility/src/index.ts"] }
+  },
+  "include": ["src"]
+}

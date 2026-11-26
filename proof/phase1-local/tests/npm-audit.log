@@ -1,0 +1,30 @@
+
+> bank-portal-microfrontends@1.0.0 audit:ci
+> npm audit --omit=dev --audit-level=critical
+
+# npm audit report
+
+uuid  <11.1.1
+Severity: moderate
+uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided - https://github.com/advisories/GHSA-w5hq-g745-h8pq
+fix available via `npm audit fix --force`
+Will install aws-rum-web@2.1.0, which is a breaking change
+node_modules/@aws-rum/web-core/node_modules/uuid
+  @aws-rum/web-core  *
+  Depends on vulnerable versions of uuid
+  node_modules/@aws-rum/web-core
+    @aws-rum/web-slim  *
+    Depends on vulnerable versions of @aws-rum/web-core
+    node_modules/@aws-rum/web-slim
+    aws-rum-web  >=3.0.0
+    Depends on vulnerable versions of @aws-rum/web-core
+    Depends on vulnerable versions of @aws-rum/web-slim
+    node_modules/aws-rum-web
+
+4 moderate severity vulnerabilities
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force

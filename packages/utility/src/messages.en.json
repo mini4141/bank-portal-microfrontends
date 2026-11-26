@@ -1,0 +1,96 @@
+{
+  "common": {
+    "appName": "Bank Portal",
+    "loading": "Loading…",
+    "retry": "Retry",
+    "error": "Something went wrong."
+  },
+  "nav": {
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "transfer": "Transfer",
+    "statements": "Statements",
+    "logout": "Log out",
+    "language": "Language",
+    "hello": "Hello, {name}"
+  },
+  "login": {
+    "title": "Log in to your account",
+    "username": "Customer ID",
+    "password": "Password",
+    "submit": "Log in",
+    "hint": "Demo credentials: taro / demo1234",
+    "error": "Customer ID or password is incorrect."
+  },
+  "accounts": {
+    "title": "Your accounts",
+    "type": {
+      "ordinary": "Ordinary",
+      "savings": "Savings",
+      "fixed": "Time deposit"
+    },
+    "number": "Account no.",
+    "balance": "Balance",
+    "details": "Account details",
+    "back": "Back to accounts",
+    "openingBalance": "Opening balance (1 Sep 2026)",
+    "viewTransactions": "View transactions"
+  },
+  "transactions": {
+    "title": "Transactions",
+    "account": "Account",
+    "type": "Type",
+    "all": "All",
+    "credit": "Deposit",
+    "debit": "Withdrawal",
+    "from": "From",
+    "to": "To",
+    "date": "Date",
+    "description": "Description",
+    "amount": "Amount",
+    "empty": "No transactions match your filters.",
+    "reportProblem": "Report a problem (dev)"
+  },
+  "transfer": {
+    "title": "Transfer money",
+    "from": "From account",
+    "payee": "Payee",
+    "amount": "Amount (JPY)",
+    "memo": "Memo",
+    "review": "Review",
+    "confirmTitle": "Confirm your transfer",
+    "confirm": "Confirm and send",
+    "back": "Back",
+    "success": "Transfer completed",
+    "successDetail": "{amount} was sent to {payee}.",
+    "newTransfer": "Make another transfer",
+    "insufficient": "Insufficient funds in the selected account.",
+    "failed": "The transfer could not be completed."
+  },
+  "statements": {
+    "title": "Monthly statement",
+    "account": "Account",
+    "month": "Month",
+    "show": "Show",
+    "opening": "Opening balance",
+    "debit": "Total withdrawals",
+    "credit": "Total deposits",
+    "closing": "Closing balance",
+    "date": "Date",
+    "description": "Description",
+    "balance": "Balance",
+    "migrated": "Migrated statement (v2)",
+    "withdrawal": "Withdrawal",
+    "deposit": "Deposit"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "first": "First page",
+    "prev": "Previous page",
+    "next": "Next page",
+    "last": "Last page",
+    "pageOf": "Page {page} of {total}",
+    "rows": "Rows per page",
+    "total": "{total} items"
+  }
+}

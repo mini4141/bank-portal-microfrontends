@@ -1,0 +1,11 @@
+node_modules
+dist
+.stage
+.local
+proof
+storybook-static
+package-lock.json
+legacy/target
+infra
+CLAUDE.md
+SPECS.md

@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@bank/utility": "http://localhost:9010/bank-utility.js",
+    "@bank/navbar": "http://localhost:9011/bank-navbar.js",
+    "@bank/accounts": "http://localhost:9012/bank-accounts.js",
+    "@bank/transactions": "http://localhost:9013/bank-transactions.js",
+    "@bank/transfer": "http://localhost:9014/bank-transfer.js",
+    "@bank/statements": "http://localhost:9015/bank-statements.js"
+  }
+}

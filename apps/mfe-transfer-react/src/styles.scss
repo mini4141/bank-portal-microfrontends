@@ -1,0 +1,44 @@
+.transfer {
+  padding: var(--bk-spacing-lg);
+  max-width: 560px;
+
+  form,
+  .panel {
+    display: grid;
+    gap: var(--bk-spacing-md);
+    padding: var(--bk-spacing-lg);
+    background: var(--bk-color-surface);
+    border: 1px solid var(--bk-color-border);
+    border-radius: var(--bk-radius-md);
+  }
+  label {
+    display: grid;
+    gap: var(--bk-spacing-xs);
+  }
+  input,
+  select {
+    height: 40px;
+    padding: 0 var(--bk-spacing-sm);
+  }
+  button {
+    min-height: 40px;
+    padding: 0 var(--bk-spacing-md);
+    border: 1px solid var(--bk-color-primary);
+    border-radius: var(--bk-radius-md);
+    background: var(--bk-color-primary);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    &.secondary {
+      background: var(--bk-color-surface);
+      color: var(--bk-color-primary);
+    }
+  }
+  .actions {
+    display: flex;
+    gap: var(--bk-spacing-sm);
+  }
+  .error {
+    color: var(--bk-color-negative);
+  }
+}

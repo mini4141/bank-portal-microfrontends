@@ -1,0 +1,40 @@
+
+> bank-portal-microfrontends@1.0.0 typecheck
+> npm run typecheck --workspaces --if-present
+
+
+> @bank/accounts@1.0.0 typecheck
+> vue-tsc --noEmit
+
+
+> @bank/navbar@1.0.0 typecheck
+> vue-tsc --noEmit
+
+
+> @bank/statements@1.0.0 typecheck
+> vue-tsc --noEmit
+
+
+> @bank/transactions@1.0.0 typecheck
+> vue-tsc --noEmit
+
+
+> @bank/transfer@1.0.0 typecheck
+> tsc --noEmit
+
+
+> @bank/root-config@1.0.0 typecheck
+> tsc --noEmit
+
+
+> @bank/ui@1.0.0 typecheck
+> vue-tsc --noEmit
+
+
+> @bank/utility@1.0.0 typecheck
+> tsc --noEmit
+
+
+> @bank/bff@1.0.0 typecheck
+> tsc --noEmit
+

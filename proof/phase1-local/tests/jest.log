@@ -1,0 +1,9 @@
+PASS apps/mfe-transactions/src/store.test.ts
+PASS apps/mfe-transfer-react/src/TransferApp.test.tsx
+PASS packages/ui/src/components/BkPagination.test.ts
+
+Test Suites: 3 passed, 3 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        10.465 s
+Ran all test suites.

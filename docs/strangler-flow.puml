@@ -1,0 +1,22 @@
+@startuml strangler-flow
+title Strangler-fig routing for /statements
+skinparam shadowing false
+
+actor Customer
+participant "Root config" as root
+participant "BFF /api/flags" as bff
+participant "AppConfig" as ac
+participant "Legacy parcel\n(JSP in iframe)" as jsp
+participant "@bank/statements\n(Vue)" as vue
+
+Customer -> root : open /statements
+root -> bff : GET /api/flags
+bff -> ac : GetLatestConfiguration
+ac --> bff : statements.v2 = on/off
+bff --> root : { "statements.v2": bool }
+alt flag off
+  root -> jsp : mount iframe /legacy/statements
+else flag on
+  root -> vue : mount Vue MFE
+end
+@enduml

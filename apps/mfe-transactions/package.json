@@ -1,0 +1,17 @@
+{
+  "name": "@bank/transactions",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.cjs",
+    "start": "webpack serve --mode development --config webpack.config.cjs",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "pinia": "^4.1.0",
+    "single-spa-vue": "^3.0.1",
+    "vue": "^3.5.46",
+    "vue-i18n": "^11.4.24",
+    "vue-router": "^5.5.1"
+  }
+}

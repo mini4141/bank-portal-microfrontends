@@ -1,0 +1,209 @@
+openapi: 3.0.3
+info:
+  title: Bank Portal BFF
+  version: 1.0.0
+  description: Mock banking API consumed by the single-spa micro-frontends.
+servers:
+  - url: /
+security:
+  - sessionCookie: []
+paths:
+  /healthz:
+    get:
+      summary: Liveness
+      security: []
+      responses:
+        '200': { description: OK }
+  /api/session:
+    post:
+      summary: Log in (sets the HttpOnly cookie)
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: Customer
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Customer' }
+        '401': { $ref: '#/components/responses/Error' }
+    delete:
+      summary: Log out
+      responses:
+        '204': { description: Cleared }
+  /api/me:
+    get:
+      summary: Current customer
+      responses:
+        '200':
+          description: Customer
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Customer' }
+        '401': { $ref: '#/components/responses/Error' }
+  /api/accounts:
+    get:
+      summary: List accounts
+      responses:
+        '200':
+          description: Accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Account' }
+  /api/accounts/{id}:
+    get:
+      summary: Account detail
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Account
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Account' }
+        '404': { $ref: '#/components/responses/Error' }
+  /api/payees:
+    get:
+      summary: Transfer payees
+      responses:
+        '200': { description: Payees }
+  /api/transactions:
+    get:
+      summary: Paginated transactions (newest first)
+      parameters:
+        - { name: accountId, in: query, schema: { type: string } }
+        - { name: page, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+        - {
+            name: size,
+            in: query,
+            schema: { type: integer, minimum: 1, maximum: 100, default: 10 },
+          }
+        - { name: from, in: query, schema: { type: string, format: date } }
+        - { name: to, in: query, schema: { type: string, format: date } }
+        - { name: type, in: query, schema: { type: string, enum: [credit, debit] } }
+      responses:
+        '200':
+          description: Page of transactions
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TransactionPage' }
+  /api/transfers:
+    post:
+      summary: Create a transfer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [fromAccountId, payeeId, amount]
+              properties:
+                fromAccountId: { type: string }
+                payeeId: { type: string }
+                amount: { type: integer, minimum: 1 }
+                memo: { type: string }
+      responses:
+        '201': { description: Completed }
+        '400': { $ref: '#/components/responses/Error' }
+        '422': { $ref: '#/components/responses/Error' }
+  /api/statements/{accountId}/{yyyymm}:
+    get:
+      summary: Monthly statement
+      parameters:
+        - { name: accountId, in: path, required: true, schema: { type: string } }
+        - { name: yyyymm, in: path, required: true, schema: { type: string, pattern: '^\d{6}$' } }
+        - { name: page, in: query, schema: { type: integer, default: 1 } }
+        - { name: size, in: query, schema: { type: integer, default: 10 } }
+      responses:
+        '200': { description: Statement with totals }
+        '404': { $ref: '#/components/responses/Error' }
+  /api/flags:
+    get:
+      summary: Feature flags (AWS AppConfig)
+      security: []
+      responses:
+        '200':
+          description: Flag map
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: { type: boolean }
+  /api/flags/{name}:
+    put:
+      summary: Toggle a flag (local only)
+      security: []
+      parameters:
+        - { name: name, in: path, required: true, schema: { type: string } }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+      responses:
+        '200': { description: Updated flag map }
+        '403': { $ref: '#/components/responses/Error' }
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: bk_session
+  responses:
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error: { type: string }
+  schemas:
+    Customer:
+      type: object
+      properties:
+        id: { type: string }
+        username: { type: string }
+        name: { type: string }
+        nameJa: { type: string }
+    Account:
+      type: object
+      properties:
+        id: { type: string }
+        type: { type: string, enum: [ordinary, savings, fixed] }
+        name: { type: string }
+        nameJa: { type: string }
+        number: { type: string }
+        openingBalance: { type: integer }
+        balance: { type: integer }
+    TransactionPage:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              id: { type: string }
+              accountId: { type: string }
+              date: { type: string, format: date }
+              description: { type: string }
+              descriptionJa: { type: string }
+              type: { type: string, enum: [credit, debit] }
+              amount: { type: integer }
+        page: { type: integer }
+        size: { type: integer }
+        total: { type: integer }
+        totalPages: { type: integer }

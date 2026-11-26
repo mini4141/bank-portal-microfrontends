@@ -1,0 +1,15 @@
+{
+  "name": "@bank/root-config",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode production --config webpack.config.cjs",
+    "start": "webpack serve --mode development --config webpack.config.cjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "single-spa": "^6.0.3",
+    "single-spa-layout": "^3.0.0",
+    "systemjs": "^6.15.1"
+  }
+}

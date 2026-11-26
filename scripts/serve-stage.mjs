@@ -12,7 +12,7 @@ const ROOT = join(process.cwd(), '.stage')
 export const SECURITY_HEADERS = {
   'Content-Security-Policy':
     "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; " +
-    "connect-src 'self' https://dataplane.rum.ap-southeast-2.amazonaws.com https://cognito-identity.ap-southeast-2.amazonaws.com https://*.ingest.sentry.io; " +
+    "connect-src 'self' https://dataplane.rum.ap-southeast-2.amazonaws.com https://cognito-identity.ap-southeast-2.amazonaws.com https://sts.ap-southeast-2.amazonaws.com https://*.ingest.sentry.io; " +
     "frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'",
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',

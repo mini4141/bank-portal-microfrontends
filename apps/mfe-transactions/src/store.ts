@@ -13,7 +13,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
   const type = ref('')
   const from = ref('')
   const to = ref('')
-  const loading = ref(false)
+  const loading = ref(true)
 
   async function fetch() {
     loading.value = true

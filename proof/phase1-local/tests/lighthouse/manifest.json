@@ -2,8 +2,8 @@
   {
     "url": "http://localhost:9000/accounts",
     "isRepresentativeRun": true,
-    "htmlPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_08_13_49.report.html",
-    "jsonPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_08_13_49.report.json",
+    "htmlPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_10_02_54.report.html",
+    "jsonPath": "C:\\Users\\ThinkPad\\Pictures\\mmvie-v2\\reqs\\8-bank-portal-microfrontends\\proof\\phase1-local\\tests\\lighthouse\\localhost-accounts-2026_11_26_10_02_54.report.json",
     "summary": {
       "performance": 0.99,
       "accessibility": 0.98,

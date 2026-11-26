@@ -2,25 +2,47 @@ import seed from '../data/seed.json'
 
 export type Tx = (typeof seed.transactions)[number]
 export type Account = (typeof seed.accounts)[number]
-
-const transactions: Tx[] = structuredClone(seed.transactions)
+/** A transfer made in this session: [accountId, amount, date, payeeId]. Carried in the signed session cookie. */
+export type TransferRecord = [string, number, string, string]
 
 export const customer = seed.customer
 export const payees = seed.payees
 
 const net = (t: Tx) => (t.type === 'credit' ? t.amount : -t.amount)
 
-export function balanceOf(a: Account, before?: string): number {
+/**
+ * Seed transactions plus this session's transfers. Transfers live in the signed cookie (not in server
+ * memory) so every Lambda instance, warm or cold, shows the same balances.
+ */
+function all(transfers: TransferRecord[]): Tx[] {
+  const mine = transfers.map(([accountId, amount, date, payeeId], i): Tx => {
+    const p = payees.find((x) => x.id === payeeId)
+    return {
+      id: `tx-t${String(i + 1).padStart(4, '0')}`,
+      accountId,
+      date,
+      description: `Transfer to ${p?.name}`,
+      descriptionJa: `${p?.nameJa}様へ振込`,
+      type: 'debit',
+      amount,
+    }
+  })
+  return [...seed.transactions, ...mine]
+}
+
+export function balanceOf(a: Account, transfers: TransferRecord[], before?: string): number {
   return (
     a.openingBalance +
-    transactions
+    all(transfers)
       .filter((t) => t.accountId === a.id && (!before || t.date < before))
       .reduce((s, t) => s + net(t), 0)
   )
 }
 
-export const listAccounts = () => seed.accounts.map((a) => ({ ...a, balance: balanceOf(a) }))
-export const findAccount = (id: string) => listAccounts().find((a) => a.id === id)
+export const listAccounts = (transfers: TransferRecord[]) =>
+  seed.accounts.map((a) => ({ ...a, balance: balanceOf(a, transfers) }))
+export const findAccount = (id: string, transfers: TransferRecord[]) =>
+  listAccounts(transfers).find((a) => a.id === id)
 
 export interface TxQuery {
   accountId?: string
@@ -33,8 +55,8 @@ export interface TxQuery {
 
 const newestFirst = (a: Tx, b: Tx) => b.date.localeCompare(a.date) || b.id.localeCompare(a.id)
 
-export function queryTransactions(q: TxQuery) {
-  const rows = transactions
+export function queryTransactions(q: TxQuery, transfers: TransferRecord[]) {
+  const rows = all(transfers)
     .filter(
       (t) =>
         (!q.accountId || t.accountId === q.accountId) &&
@@ -54,14 +76,20 @@ export function queryTransactions(q: TxQuery) {
 }
 
 /** Monthly statement. Mirrors the kept rules of the legacy JSP (see docs/migration/statements.md). */
-export function statement(accountId: string, yyyymm: string, page: number, size: number) {
+export function statement(
+  accountId: string,
+  yyyymm: string,
+  page: number,
+  size: number,
+  transfers: TransferRecord[],
+) {
   const account = seed.accounts.find((a) => a.id === accountId)
   if (!account) return undefined
   const month = `${yyyymm.slice(0, 4)}-${yyyymm.slice(4, 6)}`
-  const rows = transactions
+  const rows = all(transfers)
     .filter((t) => t.accountId === accountId && t.date.startsWith(month))
     .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id))
-  const opening = balanceOf(account, `${month}-01`)
+  const opening = balanceOf(account, transfers, `${month}-01`)
   let running = opening
   const lines = rows.map((t) => {
     running += net(t)
@@ -91,24 +119,4 @@ export function statement(accountId: string, yyyymm: string, page: number, size:
       closing: running,
     },
   }
-}
-
-let seq = 1
-export function addTransfer(
-  accountId: string,
-  payeeName: string,
-  payeeNameJa: string,
-  amount: number,
-) {
-  const tx: Tx = {
-    id: `tx-t${String(seq++).padStart(4, '0')}`,
-    accountId,
-    date: new Date().toISOString().slice(0, 10),
-    description: `Transfer to ${payeeName}`,
-    descriptionJa: `${payeeNameJa}様へ振込`,
-    type: 'debit',
-    amount,
-  }
-  transactions.push(tx)
-  return tx
 }

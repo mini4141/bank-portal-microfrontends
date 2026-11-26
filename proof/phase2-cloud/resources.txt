@@ -1,0 +1,40 @@
+# Deployed resources (2026-11-26T09:35:51Z)
+alb_dns = "bank-portal-456ec1-alb-514693699.ap-southeast-2.elb.amazonaws.com"
+appconfig_application_id = "f8imo2j"
+appconfig_environment_id = "v7ixic8"
+appconfig_profile_id = "uljf151"
+bucket = "bank-portal-456ec1-site"
+distribution_id = "E1KPLT8PSW5YDG"
+ecr_repository_url = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/bank-portal-456ec1-legacy"
+ecs_cluster = "bank-portal-456ec1-cluster"
+ecs_service = "bank-portal-456ec1-legacy"
+lambda_name = "bank-portal-456ec1-bff"
+rum_app_monitor_id = "6becf8ec-fa75-49a4-afc6-3410187f896a"
+rum_app_monitor_name = "bank-portal-456ec1"
+rum_guest_role_arn = "arn:aws:iam::<ACCOUNT_ID>:role/bank-portal-456ec1-rum-guest"
+rum_identity_pool_id = "ap-southeast-2:9c246929-c579-482e-ac9c-a4fd308c2a0f"
+site_url = "https://d3ao75rsec2ij8.cloudfront.net"
+
+arn:aws:appconfig:ap-southeast-2:<ACCOUNT_ID>:application/f8imo2j
+arn:aws:appconfig:ap-southeast-2:<ACCOUNT_ID>:application/f8imo2j/configurationprofile/uljf151
+arn:aws:appconfig:ap-southeast-2:<ACCOUNT_ID>:application/f8imo2j/environment/v7ixic8
+arn:aws:appconfig:ap-southeast-2:<ACCOUNT_ID>:application/f8imo2j/environment/v7ixic8/deployment/1
+arn:aws:cognito-identity:ap-southeast-2:<ACCOUNT_ID>:identitypool/ap-southeast-2:9c246929-c579-482e-ac9c-a4fd308c2a0f
+arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:security-group/sg-0ba4382454633336a
+arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:security-group/sg-0c79ac28ec503647a
+arn:aws:ecr:ap-southeast-2:<ACCOUNT_ID>:repository/bank-portal-456ec1-legacy
+arn:aws:ecs:ap-southeast-2:<ACCOUNT_ID>:cluster/bank-portal-456ec1-cluster
+arn:aws:ecs:ap-southeast-2:<ACCOUNT_ID>:service/bank-portal-456ec1-cluster/bank-portal-456ec1-legacy
+arn:aws:ecs:ap-southeast-2:<ACCOUNT_ID>:task-definition/bank-portal-456ec1-legacy:1
+arn:aws:elasticloadbalancing:ap-southeast-2:<ACCOUNT_ID>:listener/app/bank-portal-456ec1-alb/2f020bc67fd99de7/0e78c1951aa0e698
+arn:aws:elasticloadbalancing:ap-southeast-2:<ACCOUNT_ID>:loadbalancer/app/bank-portal-456ec1-alb/2f020bc67fd99de7
+arn:aws:elasticloadbalancing:ap-southeast-2:<ACCOUNT_ID>:targetgroup/bank-portal-456ec1-tg/3a41af7239b31342
+arn:aws:lambda:ap-southeast-2:<ACCOUNT_ID>:function:bank-portal-456ec1-bff
+arn:aws:logs:ap-southeast-2:<ACCOUNT_ID>:log-group:/aws/lambda/bank-portal-456ec1-bff
+arn:aws:logs:ap-southeast-2:<ACCOUNT_ID>:log-group:/ecs/bank-portal-456ec1-legacy
+arn:aws:rum:ap-southeast-2:<ACCOUNT_ID>:appmonitor/bank-portal-456ec1
+arn:aws:s3:::bank-portal-456ec1-site
+
+/mfe/*	s3
+/api/*	bff
+/legacy/*	legacy

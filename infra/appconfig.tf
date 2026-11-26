@@ -1,4 +1,5 @@
-# AWS AppConfig feature flags (the AWS equivalent of Firebase Remote Config), read by the BFF.
+# AWS AppConfig flags (the AWS equivalent of Firebase Remote Config), read by the BFF.
+# Freeform profile: the FeatureFlags type rejects flag names containing a dot, and the flag is called statements.v2.
 resource "aws_appconfig_application" "flags" {
   name = "${local.name}-flags"
 }
@@ -12,7 +13,7 @@ resource "aws_appconfig_configuration_profile" "flags" {
   application_id = aws_appconfig_application.flags.id
   name           = "feature-flags"
   location_uri   = "hosted"
-  type           = "AWS.AppConfig.FeatureFlags"
+  type           = "AWS.Freeform"
 }
 
 resource "aws_appconfig_hosted_configuration_version" "initial" {

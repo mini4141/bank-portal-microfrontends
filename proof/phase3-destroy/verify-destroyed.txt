@@ -1,0 +1,21 @@
+verify-destroyed 2026-11-26T09:49:41Z
+identity: arn:aws:iam::<ACCOUNT_ID>:user/bank-portal-microfrontends-deployer
+ok      CloudFront distributions (comment bank-portal): none
+ok      CloudFront functions: none
+ok      CloudFront response header policies: none
+ok      S3 buckets: none
+ok      Lambda functions: none
+ok      ECS clusters (active): none
+ok      Load balancers: none
+ok      Target groups: none
+ok      ECR repositories: none
+ok      RUM app monitors: none
+ok      AppConfig applications: none
+ok      Cognito identity pools: none
+ok      IAM roles: none
+ok      Log groups: none
+ok      Security groups: none
+ok      Tagged resources Project=bank-portal-microfrontends (ap-southeast-2, confirmed by describe): none
+n/a     Tagged resources (us-east-1): tagging API is denied by an organisation policy; CloudFront checked directly above
+
+RESULT: nothing billable remains

@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="19.424613">
+<testsuite name="2-statements-v2.spec.ts" timestamp="2026-11-26T09:33:33.934Z" hostname="" tests="1" failures="0" skipped="0" time="18.382" errors="0">
+<testcase name="flag statements.v2 swaps the JSP parcel for the Vue page with matching totals; JA is complete" classname="2-statements-v2.spec.ts" time="18.382">
+</testcase>
+</testsuite>
+</testsuites>

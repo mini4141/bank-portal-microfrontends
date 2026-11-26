@@ -3,6 +3,7 @@
 resource "aws_cognito_identity_pool" "rum" {
   identity_pool_name               = "${local.name}-rum"
   allow_unauthenticated_identities = true
+  allow_classic_flow               = true # aws-rum-web uses the basic (classic) Cognito flow
 }
 
 data "aws_iam_policy_document" "rum_assume" {

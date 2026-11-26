@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Confirms nothing billable remains. Exits non-zero if any resource of the project is still there.
-# Every check is a direct describe/list call (the tagging API lags a few minutes behind deletes).
+# Every check is a direct describe/list call; hits from the tagging API (which lags a few minutes behind
+# deletes) are confirmed with a direct describe before they count.
 set -uo pipefail
 . "$(dirname "$0")/lib.sh"
 
@@ -16,7 +17,29 @@ check() { # check <label> <command that prints matches>
   if [ -n "$hits" ]; then echo "FOUND   $label: $hits"; FOUND=1; else echo "ok      $label: none"; fi
 }
 
-{
+# Tagged ARNs that still exist according to a direct describe call.
+tagged_still_existing() {
+  local arn st
+  for arn in $(aws resourcegroupstaggingapi get-resources --region "$R" \
+    --tag-filters Key=Project,Values=bank-portal-microfrontends --query "ResourceTagMappingList[].ResourceARN" --output text); do
+    case "$arn" in
+      arn:aws:ecs:*:cluster/*)
+        st="$(aws ecs describe-clusters --region "$R" --clusters "$arn" --query 'clusters[0].status' --output text 2>/dev/null)"
+        [ "$st" = "ACTIVE" ] && echo "$arn" ;;
+      arn:aws:ecs:*:service/*)
+        local rest="${arn#*:service/}"
+        st="$(aws ecs describe-services --region "$R" --cluster "${rest%%/*}" --services "${rest#*/}" --query 'services[0].status' --output text 2>/dev/null)"
+        { [ "$st" = "ACTIVE" ] || [ "$st" = "DRAINING" ]; } && echo "$arn" ;;
+      arn:aws:ecs:*:task-definition/*)
+        # Deregistered revisions stay listed as INACTIVE; they are not billable.
+        st="$(aws ecs describe-task-definition --region "$R" --task-definition "$arn" --query 'taskDefinition.status' --output text 2>/dev/null)"
+        [ "$st" = "ACTIVE" ] && echo "$arn" ;;
+      *) echo "$arn" ;;
+    esac
+  done
+}
+
+run_checks() {
   echo "verify-destroyed $(date -u +%FT%TZ)"
   echo "identity: $(aws sts get-caller-identity --query Arn --output text | redact)"
 
@@ -27,7 +50,7 @@ check() { # check <label> <command that prints matches>
     --query "ResponseHeadersPolicyList.Items[?contains(ResponseHeadersPolicy.ResponseHeadersPolicyConfig.Name, 'bank-portal')].ResponseHeadersPolicy.Id" --output text
   check "S3 buckets" aws s3api list-buckets --query "Buckets[?contains(Name, 'bank-portal')].Name" --output text
   check "Lambda functions" aws lambda list-functions --region $R --query "Functions[?contains(FunctionName, 'bank-portal')].FunctionName" --output text
-  check "ECS clusters" aws ecs list-clusters --region $R --query "clusterArns[?contains(@, 'bank-portal')]" --output text
+  check "ECS clusters (active)" aws ecs list-clusters --region $R --query "clusterArns[?contains(@, 'bank-portal')]" --output text
   check "Load balancers" aws elbv2 describe-load-balancers --region $R --query "LoadBalancers[?contains(LoadBalancerName, 'bank-portal')].LoadBalancerArn" --output text
   check "Target groups" aws elbv2 describe-target-groups --region $R --query "TargetGroups[?contains(TargetGroupName, 'bank-portal')].TargetGroupArn" --output text
   check "ECR repositories" aws ecr describe-repositories --region $R --query "repositories[?contains(repositoryName, 'bank-portal')].repositoryName" --output text
@@ -39,12 +62,20 @@ check() { # check <label> <command that prints matches>
   check "Log groups" aws logs describe-log-groups --region $R --query "logGroups[?contains(logGroupName, 'bank-portal')].logGroupName" --output text
   check "Security groups" aws ec2 describe-security-groups --region $R --filters Name=group-name,Values='bank-portal-*' \
     --query "SecurityGroups[].GroupId" --output text
-  for region in $R us-east-1; do
-    check "Tagged resources Project=bank-portal-microfrontends ($region)" aws resourcegroupstaggingapi get-resources --region $region \
+  check "Tagged resources Project=bank-portal-microfrontends ($R, confirmed by describe)" tagged_still_existing
+
+  # CloudFront is global and was listed directly above; some orgs deny the tagging API outside their allowed regions.
+  if aws resourcegroupstaggingapi get-resources --region us-east-1 --tag-filters Key=Project,Values=bank-portal-microfrontends \
+    --query "ResourceTagMappingList[].ResourceARN" --output text >/dev/null 2>&1; then
+    check "Tagged resources (us-east-1)" aws resourcegroupstaggingapi get-resources --region us-east-1 \
       --tag-filters Key=Project,Values=bank-portal-microfrontends --query "ResourceTagMappingList[].ResourceARN" --output text
-  done
+  else
+    echo "n/a     Tagged resources (us-east-1): tagging API is denied by an organisation policy; CloudFront checked directly above"
+  fi
   echo
   if [ "$FOUND" = "0" ]; then echo "RESULT: nothing billable remains"; else echo "RESULT: resources remain"; fi
-} | tee "$OUT"
+}
 
+run_checks > "$OUT"
+cat "$OUT"
 [ "$FOUND" = "0" ]

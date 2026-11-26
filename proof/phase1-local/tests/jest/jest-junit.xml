@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="10.457">
-  <testsuite name="transactions store" errors="0" failures="0" skipped="0" timestamp="2026-11-26T08:10:43" time="2.513" tests="1">
-    <testcase classname="transactions store fetches the requested page from the BFF" name="transactions store fetches the requested page from the BFF" time="0.038">
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="11.198">
+  <testsuite name="transactions store" errors="0" failures="0" skipped="0" timestamp="2026-11-26T09:59:16" time="2.774" tests="1">
+    <testcase classname="transactions store fetches the requested page from the BFF" name="transactions store fetches the requested page from the BFF" time="0.045">
     </testcase>
   </testsuite>
-  <testsuite name="TransferApp" errors="0" failures="0" skipped="0" timestamp="2026-11-26T08:10:43" time="3.233" tests="1">
-    <testcase classname="TransferApp submits a transfer after the confirm step" name="TransferApp submits a transfer after the confirm step" time="0.553">
+  <testsuite name="TransferApp" errors="0" failures="0" skipped="0" timestamp="2026-11-26T09:59:16" time="3.458" tests="1">
+    <testcase classname="TransferApp submits a transfer after the confirm step" name="TransferApp submits a transfer after the confirm step" time="0.573">
     </testcase>
   </testsuite>
-  <testsuite name="BkPagination" errors="0" failures="0" skipped="0" timestamp="2026-11-26T08:10:43" time="3.811" tests="3">
-    <testcase classname="BkPagination emits the new page and syncs ?page=&amp;size= into the URL" name="BkPagination emits the new page and syncs ?page=&amp;size= into the URL" time="0.165">
+  <testsuite name="BkPagination" errors="0" failures="0" skipped="0" timestamp="2026-11-26T09:59:16" time="4.182" tests="3">
+    <testcase classname="BkPagination emits the new page and syncs ?page=&amp;size= into the URL" name="BkPagination emits the new page and syncs ?page=&amp;size= into the URL" time="0.167">
     </testcase>
-    <testcase classname="BkPagination supports keyboard navigation with the arrow keys" name="BkPagination supports keyboard navigation with the arrow keys" time="0.019">
+    <testcase classname="BkPagination supports keyboard navigation with the arrow keys" name="BkPagination supports keyboard navigation with the arrow keys" time="0.017">
     </testcase>
-    <testcase classname="BkPagination resets to page 1 when the page size changes" name="BkPagination resets to page 1 when the page size changes" time="0.027">
+    <testcase classname="BkPagination resets to page 1 when the page size changes" name="BkPagination resets to page 1 when the page size changes" time="0.021">
     </testcase>
   </testsuite>
 </testsuites>

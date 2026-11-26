@@ -10,7 +10,7 @@ const LEGACY = '@bank/legacy-statements'
 
 async function boot() {
   const utility = await System.import<Utility>('@bank/utility')
-  utility.initAnalytics(await utility.loadConfig())
+  await utility.initAnalytics(await utility.loadConfig()).catch(console.error)
 
   const [user, flags] = await Promise.all([
     utility.fetchMe(),

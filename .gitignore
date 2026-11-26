@@ -19,3 +19,4 @@ playwright-report/
 tfplan
 lambda.zip
 .DS_Store
+infra/.build/

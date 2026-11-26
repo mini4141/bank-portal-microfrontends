@@ -1,3 +1,4 @@
+import './public-path'
 export * from './api'
 export * from './auth'
 export * from './i18n'

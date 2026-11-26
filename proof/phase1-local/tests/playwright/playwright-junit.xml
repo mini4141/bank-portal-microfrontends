@@ -1,10 +1,10 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="7.602279">
-<testsuite name="1-demo.spec.ts" timestamp="2026-11-26T08:13:24.506Z" hostname="" tests="1" failures="0" skipped="0" time="4.859" errors="0">
-<testcase name="demo story: login, accounts, transactions page 2, transfer (React), legacy statement" classname="1-demo.spec.ts" time="4.859">
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="7.811843999999999">
+<testsuite name="1-demo.spec.ts" timestamp="2026-11-26T10:02:27.331Z" hostname="" tests="1" failures="0" skipped="0" time="5.145" errors="0">
+<testcase name="demo story: login, accounts, transactions page 2, transfer (React), legacy statement" classname="1-demo.spec.ts" time="5.145">
 </testcase>
 </testsuite>
-<testsuite name="2-statements-v2.spec.ts" timestamp="2026-11-26T08:13:24.506Z" hostname="" tests="1" failures="0" skipped="0" time="1.31" errors="0">
-<testcase name="flag statements.v2 swaps the JSP parcel for the Vue page with matching totals; JA is complete" classname="2-statements-v2.spec.ts" time="1.31">
+<testsuite name="2-statements-v2.spec.ts" timestamp="2026-11-26T10:02:27.331Z" hostname="" tests="1" failures="0" skipped="0" time="1.29" errors="0">
+<testcase name="flag statements.v2 swaps the JSP parcel for the Vue page with matching totals; JA is complete" classname="2-statements-v2.spec.ts" time="1.29">
 </testcase>
 </testsuite>
 </testsuites>

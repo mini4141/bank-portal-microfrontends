@@ -1,7 +1,7 @@
 
 Running 2 tests using 1 worker
 
-  ok 1 tests\1-demo.spec.ts:4:1 › demo story: login, accounts, transactions page 2, transfer (React), legacy statement (4.9s)
+  ok 1 tests\1-demo.spec.ts:4:1 › demo story: login, accounts, transactions page 2, transfer (React), legacy statement (5.1s)
   ok 2 tests\2-statements-v2.spec.ts:6:1 › flag statements.v2 swaps the JSP parcel for the Vue page with matching totals; JA is complete (1.3s)
 
-  2 passed (7.6s)
+  2 passed (7.8s)

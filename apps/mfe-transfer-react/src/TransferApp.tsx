@@ -41,6 +41,7 @@ export default function TransferApp() {
   const payee = payees.find((p) => p.id === payeeId)
   const payeeName = payee ? (locale === 'ja' ? payee.nameJa : payee.name) : ''
   const yen = Number(amount)
+  const ready = accounts.length > 0 && payees.length > 0
 
   function review(e: FormEvent) {
     e.preventDefault()
@@ -126,7 +127,9 @@ export default function TransferApp() {
             <input value={memo} maxLength={40} onChange={(e) => setMemo(e.target.value)} />
           </label>
           <div className="actions">
-            <button type="submit">{tr('transfer.review')}</button>
+            <button type="submit" disabled={!ready}>
+              {tr('transfer.review')}
+            </button>
           </div>
         </form>
       )}

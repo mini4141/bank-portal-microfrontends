@@ -42,8 +42,26 @@ Every artifact below was produced by a script (`scripts/test-all.sh`, `scripts/c
 
 ## Phase 2: cloud (`phase2-cloud/`)
 
-See the section appended after the deploy.
+Deployed with `scripts/deploy.sh` (Terraform, S3 + CloudFront, Lambda BFF, ECS Fargate Tomcat behind an ALB, AppConfig, CloudWatch RUM) and exercised through the CloudFront URL..
+
+| File | Proves |
+| --- | --- |
+| [screenshots/01-cf-accounts.png](phase2-cloud/screenshots/01-cf-accounts.png) | Accounts rendered from the CDN with data from the Lambda BFF |
+| [screenshots/02-cf-statements-legacy.png](phase2-cloud/screenshots/02-cf-statements-legacy.png) | Flag off: JSP from ECS Fargate through the ALB, inside the parcel |
+| [screenshots/03-cf-statements-v2.png](phase2-cloud/screenshots/03-cf-statements-v2.png) | After the AppConfig deployment: migrated Vue page, same totals |
+| [screenshots/04-cf-ja.png](phase2-cloud/screenshots/04-cf-ja.png) | Japanese UI in the cloud |
+| [tests/playwright-cloud/](phase2-cloud/tests/playwright-cloud) | Cloud Playwright: full demo story (flag off), incl. RUM requests sent |
+| [tests/playwright-cloud-v2/](phase2-cloud/tests/playwright-cloud-v2) | Cloud Playwright after the flag flip: Vue totals equal JSP totals, JA |
+| [logs/appconfig-deploy.log](phase2-cloud/logs/appconfig-deploy.log) | Hosted configuration version + deployment via `aws appconfig`, flag seen by the BFF |
+| [logs/rum-events.json](phase2-cloud/logs/rum-events.json) | `aws rum get-app-monitor-data`: page views, web vitals, sessions from the run |
+| [logs/curl-headers-csp.txt](phase2-cloud/logs/curl-headers-csp.txt) | CSP, HSTS, X-Frame-Options and cache headers from CloudFront |
+| [logs/playwright-cloud-flag-off.log](phase2-cloud/logs/playwright-cloud-flag-off.log), [logs/playwright-cloud-flag-on.log](phase2-cloud/logs/playwright-cloud-flag-on.log) | Cloud test output |
+| [resources.txt](phase2-cloud/resources.txt) | Deployed resources and the CloudFront path behaviours |
 
 ## Phase 3: destroy (`phase3-destroy/`)
 
-See the section appended after the destroy.
+Run with `scripts/destroy.sh`, then `scripts/verify-destroyed.sh`.
+
+| File | Proves |
+| --- | --- |
+| [verify-destroyed.txt](phase3-destroy/verify-destroyed.txt) | No CloudFront distribution, S3 bucket, Lambda, ECS cluster, ALB, RUM monitor, AppConfig application, Cognito pool, IAM role or tagged resource remains |

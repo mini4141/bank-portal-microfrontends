@@ -37,6 +37,15 @@ export async function initAnalytics(config: BankConfig): Promise<void> {
   adapter = rumAdapter(AwsRum, config.rum)
 }
 
+/** Analytics must never break the UI: adapter failures are logged and swallowed. */
+const safely = (fn: () => void) => {
+  try {
+    fn()
+  } catch (e) {
+    console.warn('[analytics] failed', e)
+  }
+}
+
 export const track = (name: string, props: Record<string, unknown> = {}) =>
-  adapter.event(name, props)
-export const trackPageView = (path: string) => adapter.pageView(path)
+  safely(() => adapter.event(name, props))
+export const trackPageView = (path: string) => safely(() => adapter.pageView(path))

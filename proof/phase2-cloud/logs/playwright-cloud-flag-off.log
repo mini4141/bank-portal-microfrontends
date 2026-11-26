@@ -1,0 +1,6 @@
+
+Running 1 test using 1 worker
+
+  ok 1 tests\1-demo.spec.ts:4:1 › demo story: login, accounts, transactions page 2, transfer (React), legacy statement (31.7s)
+
+  1 passed (32.8s)

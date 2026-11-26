@@ -11,7 +11,7 @@ export const useStatementStore = defineStore('statement', () => {
   const page = ref(initial.page)
   const size = ref(initial.size)
   const statement = ref<Statement | null>(null)
-  const loading = ref(false)
+  const loading = ref(true)
 
   async function fetch() {
     loading.value = true

@@ -34,10 +34,10 @@ SITE="$(out site_url)"; BUCKET="$(out bucket)"; DIST="$(out distribution_id)"
 log "site: $SITE"
 
 log "[2-3/6] runtime config + upload to S3 (versioned MFE paths, importmap.json last)"
-node -e "
-const o=(k)=>process.argv[process.argv.indexOf(k)+1];
-require('fs').writeFileSync('.stage/config.json', JSON.stringify({rum:{applicationId:o('--id'),identityPoolId:o('--pool'),guestRoleArn:o('--role'),region:'ap-southeast-2'}},null,2))
-" --id "$(out rum_app_monitor_id)" --pool "$(out rum_identity_pool_id)" --role "$(out rum_guest_role_arn)"
+RUM_ID="$(out rum_app_monitor_id)" RUM_POOL="$(out rum_identity_pool_id)" RUM_ROLE="$(out rum_guest_role_arn)" node -e "
+const e=process.env
+require('fs').writeFileSync('.stage/config.json', JSON.stringify({ rum: { applicationId: e.RUM_ID, identityPoolId: e.RUM_POOL, guestRoleArn: e.RUM_ROLE, region: 'ap-southeast-2' } }, null, 2))
+"
 IMMUTABLE="public,max-age=31536000,immutable"
 aws s3 cp .stage "s3://$BUCKET" --recursive --exclude "*" --include "*.js" --content-type "text/javascript; charset=utf-8" --cache-control "$IMMUTABLE" --only-show-errors
 aws s3 cp .stage "s3://$BUCKET" --recursive --exclude "*" --include "*.html" --content-type "text/html; charset=utf-8" --cache-control "no-cache" --only-show-errors

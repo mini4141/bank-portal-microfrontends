@@ -29,7 +29,7 @@ resource "aws_cloudfront_response_headers_policy" "security" {
   security_headers_config {
     content_security_policy {
       override                = true
-      content_security_policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://dataplane.rum.${var.region}.amazonaws.com https://cognito-identity.${var.region}.amazonaws.com https://*.ingest.sentry.io; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'"
+      content_security_policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://dataplane.rum.${var.region}.amazonaws.com https://cognito-identity.${var.region}.amazonaws.com https://sts.${var.region}.amazonaws.com https://*.ingest.sentry.io; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'"
     }
     content_type_options {
       override = true

@@ -1,4 +1,4 @@
-import Fastify from 'fastify'
+import Fastify, { type FastifyReply, type FastifyRequest } from 'fastify'
 import cookie from '@fastify/cookie'
 import { getFlags, setLocalFlag } from './flags.js'
 import * as store from './store.js'
@@ -6,11 +6,43 @@ import * as store from './store.js'
 const COOKIE = 'bk_session'
 const DEMO_USER = 'taro'
 const DEMO_PASSWORD = 'demo1234'
+const MAX_TRANSFERS = 40
+
+interface Session {
+  u: string
+  t: store.TransferRecord[]
+}
+
+const encode = (s: Session) => Buffer.from(JSON.stringify(s)).toString('base64url')
+const decode = (v: string): Session | undefined => {
+  try {
+    const s = JSON.parse(Buffer.from(v, 'base64url').toString('utf8')) as Session
+    return s.u === store.customer.id && Array.isArray(s.t) ? s : undefined
+  } catch {
+    return undefined
+  }
+}
+
+declare module 'fastify' {
+  interface FastifyRequest {
+    session?: Session
+  }
+}
 
 export function buildApp() {
   const app = Fastify({ logger: process.env.NODE_ENV !== 'test' })
   const secret = process.env.SESSION_SECRET ?? 'dev-only-session-secret-change-me'
   app.register(cookie, { secret })
+
+  // The session is a signed, HttpOnly cookie: customer id + this session's transfers (stateless BFF).
+  const writeSession = (req: FastifyRequest, reply: FastifyReply, session: Session) =>
+    reply.setCookie(COOKIE, encode(session), {
+      signed: true,
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: req.headers['x-forwarded-proto'] === 'https',
+      path: '/',
+    })
 
   app.addHook('onSend', async (_req, reply) => {
     reply.header('Cache-Control', 'no-store')
@@ -21,11 +53,12 @@ export function buildApp() {
       req.url === '/healthz' || req.url === '/api/session' || req.url.startsWith('/api/flags')
     if (open) return
     const raw = req.cookies[COOKIE]
-    const u = raw ? req.unsignCookie(raw) : undefined
-    if (!u?.valid || u.value !== store.customer.id) {
-      return reply.code(401).send({ error: 'unauthorized' })
-    }
+    const unsigned = raw ? req.unsignCookie(raw) : undefined
+    req.session = unsigned?.valid && unsigned.value ? decode(unsigned.value) : undefined
+    if (!req.session) return reply.code(401).send({ error: 'unauthorized' })
   })
+
+  const transfers = (req: FastifyRequest) => req.session?.t ?? []
 
   app.get('/healthz', async () => ({ status: 'ok' }))
 
@@ -36,13 +69,7 @@ export function buildApp() {
       if (username !== DEMO_USER || password !== DEMO_PASSWORD) {
         return reply.code(401).send({ error: 'invalid_credentials' })
       }
-      reply.setCookie(COOKIE, store.customer.id, {
-        signed: true,
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: req.headers['x-forwarded-proto'] === 'https',
-        path: '/',
-      })
+      writeSession(req, reply, { u: store.customer.id, t: [] })
       return store.customer
     },
   )
@@ -53,43 +80,57 @@ export function buildApp() {
   })
 
   app.get('/api/me', async () => store.customer)
-  app.get('/api/accounts', async () => store.listAccounts())
+  app.get('/api/accounts', async (req) => store.listAccounts(transfers(req)))
   app.get<{ Params: { id: string } }>(
     '/api/accounts/:id',
     async (req, reply) =>
-      store.findAccount(req.params.id) ?? reply.code(404).send({ error: 'not_found' }),
+      store.findAccount(req.params.id, transfers(req)) ??
+      reply.code(404).send({ error: 'not_found' }),
   )
   app.get('/api/payees', async () => store.payees)
 
   app.get<{ Querystring: Record<string, string | undefined> }>('/api/transactions', async (req) => {
     const q = req.query
-    return store.queryTransactions({
-      accountId: q.accountId,
-      page: Math.max(1, Number(q.page) || 1),
-      size: Math.min(100, Math.max(1, Number(q.size) || 10)),
-      from: q.from || undefined,
-      to: q.to || undefined,
-      type: q.type || undefined,
-    })
+    return store.queryTransactions(
+      {
+        accountId: q.accountId,
+        page: Math.max(1, Number(q.page) || 1),
+        size: Math.min(100, Math.max(1, Number(q.size) || 10)),
+        from: q.from || undefined,
+        to: q.to || undefined,
+        type: q.type || undefined,
+      },
+      transfers(req),
+    )
   })
 
   app.post<{ Body: { fromAccountId: string; payeeId: string; amount: number; memo?: string } }>(
     '/api/transfers',
     async (req, reply) => {
       const { fromAccountId, payeeId, amount } = req.body ?? ({} as never)
-      const account = store.findAccount(fromAccountId)
+      const mine = transfers(req)
+      const account = store.findAccount(fromAccountId, mine)
       const payee = store.payees.find((p) => p.id === payeeId)
       if (!account || !payee || !Number.isInteger(amount) || amount <= 0) {
         return reply.code(400).send({ error: 'invalid_request' })
       }
       if (amount > account.balance) return reply.code(422).send({ error: 'insufficient_funds' })
-      const tx = store.addTransfer(account.id, payee.name, payee.nameJa, amount)
+      if (mine.length >= MAX_TRANSFERS) return reply.code(429).send({ error: 'transfer_limit' })
+
+      const record: store.TransferRecord = [
+        account.id,
+        amount,
+        new Date().toISOString().slice(0, 10),
+        payee.id,
+      ]
+      const next = [...mine, record]
+      writeSession(req, reply, { u: store.customer.id, t: next })
       return reply.code(201).send({
-        id: tx.id,
+        id: `tx-t${String(next.length).padStart(4, '0')}`,
         status: 'completed',
         amount,
         fromAccountId,
-        balance: store.findAccount(fromAccountId)?.balance,
+        balance: account.balance - amount,
       })
     },
   )
@@ -104,6 +145,7 @@ export function buildApp() {
       req.params.yyyymm,
       Math.max(1, Number(req.query.page) || 1),
       Math.min(100, Math.max(1, Number(req.query.size) || 10)),
+      transfers(req),
     )
     return s ?? reply.code(404).send({ error: 'not_found' })
   })

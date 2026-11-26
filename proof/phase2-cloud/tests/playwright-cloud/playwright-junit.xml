@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="32.794261">
+<testsuite name="1-demo.spec.ts" timestamp="2026-11-26T09:24:31.904Z" hostname="" tests="1" failures="0" skipped="0" time="31.659" errors="0">
+<testcase name="demo story: login, accounts, transactions page 2, transfer (React), legacy statement" classname="1-demo.spec.ts" time="31.659">
+</testcase>
+</testsuite>
+</testsuites>

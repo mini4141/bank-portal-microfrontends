@@ -6,7 +6,7 @@ Resume from here after a restart. Phases run strictly in order (see `CLAUDE.md` 
 
 - [x] Repo layout from `SPECS.md` §4
 - [x] `README.md`, `PROGRESS.md`, `docs/DECISIONS.md`
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
 - [x] `.gitignore`, `.gitattributes`, `.env.example`
 - [x] CI workflow `.github/workflows/ci.yml`
 
@@ -35,11 +35,11 @@ Proof (`proof/phase1-local/`)
 - [ ] `screenshots/07-statements-v2-vue.png`
 - [ ] `screenshots/08-storybook-pagination.png`
 - [ ] `logs/analytics-console.log`
-nalytics/ s/- [ ]/- [x]/
+      nalytics/ s/- [ ]/- [x]/
 - [ ] `logs/flag-toggle.log`
-nalytics/ s/- [ ]/- [x]/
+      nalytics/ s/- [ ]/- [x]/
 - [ ] `docs/architecture.svg` (rendered PlantUML)
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
 - [x] `scripts/test-all.sh` green, CI on `main` green, `proof/README.md` index complete
 
 ## Requirement coverage matrix (`SPECS.md` §2)
@@ -47,7 +47,7 @@ rchitecture.svg/ s/- [ ]/- [x]/
 - [x] Design and implement frontend with Vue.js and TypeScript: 3 Vue MFEs + UI library (screenshots, Jest)
 - [x] Legacy JSP modernisation, step-by-step migration (before/after screenshots)
 - [x] Align API requirements with backend: `docs/api-contract.md` + OpenAPI, typed client
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
 - [x] Code reviews / best practices / standards: ESLint/Prettier, PR template, `CONTRIBUTING.md`, pagination standard
 - [x] Monitor released features, resolve prod issues: Sentry + RUM + error-boundary demo
 - [x] Tech stack: Vue, React, single-spa, JSP, AWS, GH Actions, Terraform, Webpack, Jest, i18n, Storybook, Sentry, RUM/AppConfig
@@ -56,7 +56,7 @@ rchitecture.svg/ s/- [ ]/- [x]/
 - [ ] CDN / web hosting infra: CloudFront behaviours, cache policies (`resources.txt`)
 - [x] RESTful API design: BFF + OpenAPI
 - [x] AI/LLM tools in development: `docs/AI_USAGE.md`
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
 
 ## Phase 2: AWS (`SPECS.md` §10)
 
@@ -64,7 +64,7 @@ rchitecture.svg/ s/- [ ]/- [x]/
 - [ ] `scripts/deploy.sh` runs end to end
 - [ ] `screenshots/01-cf-accounts.png`, `02-cf-statements-legacy.png`, `03-cf-statements-v2.png`, `04-cf-ja.png`
 - [ ] `logs/curl-headers-csp.txt`, `logs/rum-events.json`, `logs/appconfig-deploy.log`, `resources.txt`
-nalytics/ s/- [ ]/- [x]/
+      nalytics/ s/- [ ]/- [x]/
 - [ ] `tests/playwright-cloud/`
 
 ## Phase 3: destroy (`SPECS.md` §11)
@@ -75,7 +75,7 @@ nalytics/ s/- [ ]/- [x]/
 ## Phase 4: write-up
 
 - [ ] `docs/PORTFOLIO.md`
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
 - [ ] `README.md` final, `proof/README.md` index complete, everything pushed
 
 ## Definition of done (`CLAUDE.md` §12)
@@ -85,4 +85,4 @@ rchitecture.svg/ s/- [ ]/- [x]/
 - [ ] Phase 2 proof complete
 - [ ] Phase 3 everything destroyed, `verify-destroyed.txt` clean
 - [ ] `docs/PORTFOLIO.md` and `README.md` written, committed and pushed
-rchitecture.svg/ s/- [ ]/- [x]/
+      rchitecture.svg/ s/- [ ]/- [x]/
